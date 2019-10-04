@@ -10,4 +10,4 @@ Download the Bash script as follows:
 
 Give the script execution permition with `chmod +x lgbgchgr.sh` command and run it with root privileges `sudo ./lgbgchgr.sh path/to/imagefile`.
 
-if you see a message `login screen background image was sucessfully changed`, then, the next time you login, your background screen should be the one you chosed. However, if you see a message `Please, submit an image file as in ./lgbgchgr.sh path/to/file`
+if you see a message `login screen background image was sucessfully changed`, then, the next time you login, your background screen should be the one you chosed. However, if you see a message `Please, submit an image file as in ./lgbgchgr.sh path/to/file`, you need to submit a .*g image file.
