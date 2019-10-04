@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#	A script which automates the process of changing the Gnome Display Manager(gdm) login screen background of Ubuntu, by Thiago Silva
+#	A script which automates the process of changing the Gnome Display Manager(gdm) login screen background of Ubuntu.
 
 # Testing if file argument is an image
 
@@ -35,7 +35,7 @@ then
 # If no image file was submited, ask for proper submission.
 
 else
-	echo "Please, submit an image file" 
+	echo "Please, submit an image file as in ./lgbgchgr.sh path/to/file" 
 
 fi
 
