@@ -1,7 +1,7 @@
 # Ubuntu 18.04 Login Background Changer
 A Bash script which automates the process of changing the Gnome Display Manager login screen background image of Ubuntu 18.04.
 
-Warning: this script was not tested on any other Ubuntu versions. So, if you want to use it on versions other than 18.04, run it at our own risk.
+WARNING: this script was not tested on any other Ubuntu versions. So, if you want to use it on versions other than 18.04, run it at our own risk.
 
 ## Usage
 Download the Bash script as follows:
