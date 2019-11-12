@@ -7,7 +7,6 @@
 if [[ $(file --mime-type -b "$1") = image/*g ]] 
 
 then
-
 # Get the full path of submited image.
 	imgPath=$( realpath "$1" )
 # Ubuntu GDM login background configuration file path.
@@ -15,7 +14,7 @@ then
 # Change the login background image to the one you submited.
 	ex $cssPath << EOF
 /#lockDialogGroup
-:normal jf(di(ifile://$imgPath
+:normal jf(lvf)hdifile://$imgPath
 :%s/background-repeat: repeat/background-size: cover/
 :wq
 EOF
