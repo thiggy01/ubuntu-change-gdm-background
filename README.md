@@ -11,4 +11,4 @@ Give it execution permition with `chmod +x gnome-change-login-background` comman
 as `sudo ./gnome-change-login-background path/to/image/file`.
 
 If you see a message `login background image sucessfully changed`, then, when you restart gdm or reboot your computer, 
-your gdm login background should be covered with the one you submited.
+your gdm login background should be covered with the image you submited.
