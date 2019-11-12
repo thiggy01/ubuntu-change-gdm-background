@@ -29,7 +29,7 @@ EOF
 
 # If no image file was submited, ask for proper submission.
 else
-	echo "Please, submit an .jpg, .jpeg or png image file."
+	echo "Please, submit an .jpg, .jpeg or .png image file."
 	echo "Usage: sudo ./ubuntu-change-login-background path/to/image.*g" 
 
 fi
