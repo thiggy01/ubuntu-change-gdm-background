@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#	This script automates the process of changing the Gnome Display
+# This script automates the process of changing the Gnome Display
 # Manager(gdm) login background image.
 
 # Test if argument is an image file.
