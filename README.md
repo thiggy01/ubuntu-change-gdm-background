@@ -1,13 +1,15 @@
-# Ubuntu 18.04 Login Background Changer 
-A Bash script which automates the process of changing the Gnome Display Manager login screen background image of Ubuntu 18.04. 
-
-WARNING: this script was not tested on any other Ubuntu versions. So, if you want to use it on versions other than 18.04, run it at our own risk.R
+# Gnome Display Manager Login Background Changer 
+A script which automates the process of changing the Gnome Display Manager login screen background image of Gnome 
+Display Manager version 3. 
 
 ## Usage
-Warning: this script was not tested on any other Ubuntu versions. So, if you want to use it on versions other than 18.04, run it at our own risk.
+Download it with the following command:
 
-    curl https://raw.githubusercontent.com/thiggy01/ubuntu-login-background-changer/master/lgbgchgr.sh > lgbgchgr.sh
+    curl -L -O github.com/thiggy01/gnome-change-login-background/raw/master/gnome-change-login-background
 
-Give the script execution permition with `chmod +x lgbgchgr.sh` command and run it with root privileges `sudo ./lgbgchgr.sh path/to/imagefile`.
+Give it execution permition with `chmod +x gnome-change-login-background` command and run it with root privileges such 
+as `sudo ./gnome-change-login-background path/to/image/file`.
 
-if you see a message `login screen background image was sucessfully changed`, then, the next time you login, your background screen should be the one you chosed. However, if you see a message `Please, submit an image file as in ./lgbgchgr.sh path/to/file`, you need to submit a *g image file.
+If you see a message `login background image sucessfully changed`, then, when you restart gdm or reboot your computer, 
+your gdm login background should be covered with the one you submited. However, if you see a message `Please, submit an
+image file` you need to submit a .jpg,.jpeg or png image file.
