@@ -23,7 +23,7 @@ EOF
 	if [ $? == 0 ]
 	then
 		echo "Login background image sucessfully changed."
-		echo "Restart gdm or reboot the computer to apply it." 
+		echo "Restart gdm or reboot to apply this change." 
 	fi
 
 # If no image file was submited, ask for proper submission.
