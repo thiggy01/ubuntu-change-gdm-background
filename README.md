@@ -1,8 +1,8 @@
-# Gnome Display Manager Login Background Changer 
+# gnome-change-login-background 
 A script which automates the process of changing the Gnome Display Manager login screen background image of Gnome 
 Display Manager version 3. 
 
-## Usage
+## Installation and Usage
 Download it with the following command:
 
     curl -L -O github.com/thiggy01/gnome-change-login-background/raw/master/gnome-change-login-background
