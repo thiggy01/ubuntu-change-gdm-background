@@ -1,16 +1,31 @@
 #!/bin/bash
 
-# This script automates the process of changing the Gnome Display
-# Manager(gdm) login background image.
+# This script automates the process of changing the Gnome Display Manager(gdm)
+# login background image.
+
+# Add the restore option in order to revert configuration to the original one.
+if [ "$1" = --restore ] 
+then
+	update-alternatives --install /usr/share/gnome-shell/theme/gdm3.css gdm3.css /usr/share/gnome-shell/theme/gdm3.css~ 10
+	update-alternatives --set gdm3.css /usr/share/gnome-shell/theme/gdm3.css~ &> /dev/null
+	echo "Login background sucessfully restored to its original configuration."
+	echo "Reboot to apply changes"
+	exit
+fi
 
 # Test if argument is an image file.
 if [[ $(file --mime-type -b "$1") = image/*g ]] 
-
 then
 # Get the full path of submited image.
 	imgPath=$( realpath "$1" )
 # Ubuntu GDM login background configuration file path.
 	cssPath=/usr/share/gnome-shell/theme/gdm3.css
+# Test if there is a backup of the original gdm css file and create a backup if
+# there isn't one. 
+	if [ ! -f "$cssPath"~ ]
+	then
+		cp "$cssPath" "$cssPath"~ 
+	fi
 # Change the login background image to the one you submited.
 	ex $cssPath << EOF
 /#lockDialogGroup
@@ -23,12 +38,10 @@ EOF
 	if [ $? == 0 ]
 	then
 		echo "Login background image sucessfully changed."
-		echo "Restart gdm or reboot to apply this change." 
+		echo "Restart gdm or reboot to apply changes." 
 	fi
-
 # If no image file was submited, ask for proper submission.
 else
 	echo "Please, submit an .jpg, .jpeg or .png image file."
 	echo "Usage: sudo ./ubuntu-change-login-background path/to/image.*g" 
-
 fi
