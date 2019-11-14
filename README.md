@@ -13,8 +13,4 @@ as `sudo ./gnome-change-login-background path/to/image/file`.
 If you see a message `login background image sucessfully changed`, then, when you restart gdm or reboot your computer, 
 your gdm login background should be covered with the image you submited.
 
-<<<<<<< HEAD
 You can restore your original gdm theme any time with `sudo ./gnome-change-login-background --restore`.
-=======
-You can restore to your original gdm theme any time with `sudo ./gnome-change-login-background --restore`.
->>>>>>> 38712493dee61e03bbd90f008a5236b894ba4b0a
