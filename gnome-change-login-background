@@ -6,10 +6,9 @@
 # Add the restore option in order to revert configuration to the original one.
 if [ "$1" = --restore ] 
 then
-	update-alternatives --install /usr/share/gnome-shell/theme/gdm3.css gdm3.css /usr/share/gnome-shell/theme/gdm3.css~ 10
-	update-alternatives --set gdm3.css /usr/share/gnome-shell/theme/gdm3.css~ &> /dev/null
-	echo "Login background sucessfully restored to its original configuration."
-	echo "Reboot to apply changes"
+	cat /usr/share/gnome-shell/theme/gdm3.css~ > /usr/share/gnome-shell/theme/gdm3.css
+	echo "Login background sucessfully restored to its original theme."
+	echo "Restart gdm to apply change"
 	exit
 fi
 
@@ -38,7 +37,7 @@ EOF
 	if [ $? == 0 ]
 	then
 		echo "Login background image sucessfully changed."
-		echo "Restart gdm or reboot to apply changes." 
+		echo "Restart gdm to apply change." 
 	fi
 # If no image file was submited, ask for proper submission.
 else
