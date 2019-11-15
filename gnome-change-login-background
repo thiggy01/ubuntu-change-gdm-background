@@ -8,7 +8,7 @@ if [ "$1" = --restore ]
 then
 	cat /usr/share/gnome-shell/theme/gdm3.css~ > /usr/share/gnome-shell/theme/gdm3.css
 	echo "Login background sucessfully restored to its original theme."
-	echo "Restart gdm to apply change"
+	echo "Restart Gnome to apply change."
 	exit
 fi
 
@@ -37,7 +37,7 @@ EOF
 	if [ $? == 0 ]
 	then
 		echo "Login background image sucessfully changed."
-		echo "Restart gdm to apply change." 
+		echo "Restart Gnome to apply change." 
 	fi
 # If no image file was submited, ask for proper submission.
 else
