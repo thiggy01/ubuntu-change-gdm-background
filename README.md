@@ -1,4 +1,4 @@
-# gnome-change-login-background 
+# gdm-change-login-background 
 A script which automates the process of changing the Gnome Display Manager login screen background image of Gnome 
 Display Manager version 3. 
 
