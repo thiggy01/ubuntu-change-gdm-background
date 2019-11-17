@@ -28,8 +28,7 @@ then
 # Change the login background image to the one you submited.
 	ex $cssPath << EOF
 /#lockDialogGroup
-:normal jf(lvf)hdifile://$imgPath
-:%s/background-repeat: repeat/background-size: cover/
+:normal jf:ld}a url(file://$imgPath);o	background-size: cover; }
 :wq
 EOF
 # Test if login screen background was changed.
