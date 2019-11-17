@@ -3,6 +3,15 @@
 # This script automates the process of changing the Gnome Display Manager(gdm)
 # login background image.
 
+# Add the restore option in order to revert configuration to the original one.
+if [ "$1" = --restore ] 
+then
+	cat /usr/share/gnome-shell/theme/gdm3.css~ > /usr/share/gnome-shell/theme/gdm3.css
+	echo "Login background sucessfully restored to its original theme."
+	echo "Restart Gnome to apply change."
+	exit
+fi
+
 # Test if argument is an image file.
 if [[ $(file --mime-type -b "$1") = image/*g ]] 
 then
@@ -34,13 +43,4 @@ EOF
 else
 	echo "Please, submit an .jpg, .jpeg or .png image file."
 	echo "Usage: sudo ./ubuntu-change-login-background path/to/image.*g" 
-fi
-
-# Add the restore option in order to revert configuration to the original one.
-if [ "$1" = --restore ] 
-then
-	cat /usr/share/gnome-shell/theme/gdm3.css~ > /usr/share/gnome-shell/theme/gdm3.css
-	echo "Login background sucessfully restored to its original theme."
-	echo "Restart Gnome to apply change."
-	exit
 fi
