@@ -1,11 +1,14 @@
 #!/bin/bash
-
+# ============================================================================ #
 # This script automates the process of changing the Gnome Display Manager(gdm)
 # login background image.
+# Autor: Thiago Silva
+# Contact: thiagos.dasilva@gmail.com
+# URL: https://github.com/thiggy01/gdm-change-login-background
+# ============================================================================ #
 
-# Add the restore option in order to revert configuration to the original one.
-if [ "$1" = --restore ] 
-then
+# Add the restore option in order to restore gdm its original theme.
+if [ "$1" = --restore ]; then
 	cat /usr/share/gnome-shell/theme/gdm3.css~ > /usr/share/gnome-shell/theme/gdm3.css
 	echo "Login background sucessfully restored to its original theme."
 	echo "Restart Gnome to apply change."
@@ -13,15 +16,14 @@ then
 fi
 
 # Test if argument is an image file.
-if [[ $(file --mime-type -b "$1") = image/*g ]] 
-then
+if [[ $(file --mime-type -b "$1") = image/*g ]]; then
 # Get the full path of submited image.
 	imgPath=$( realpath "$1" )
 # Ubuntu GDM login background configuration file path.
 	cssPath=/usr/share/gnome-shell/theme/gdm3.css
 # Test if there is a backup of the original gdm css file and create a backup if
 # there isn't one. 
-	if [ ! -f "$cssPath"~ ]
+	if [[ ! -f "$cssPath"~ ]]
 	then
 		cp "$cssPath" "$cssPath"~ 
 	fi
@@ -32,9 +34,7 @@ then
 :wq
 EOF
 # Test if login screen background was changed.
-	grep -q $imgPath $cssPath
-	if [ $? == 0 ]
-	then
+	if grep -q "$imgPath" "$cssPath" = 0; then
 		echo "Login background image sucessfully changed."
 		echo "Restart Gnome to apply change." 
 	fi
