@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ============================================================================ #
 # This script automates the process of changing the Gnome Display Manager(gdm)
 # login background image.
@@ -9,37 +9,40 @@
 
 # Add the restore option in order to restore gdm its original theme.
 if [ "$1" = --restore ]; then
-	cat /usr/share/gnome-shell/theme/gdm3.css~ > /usr/share/gnome-shell/theme/gdm3.css
-	echo "Login background sucessfully restored to its original theme."
-	echo "Restart Gnome to apply change."
-	exit
+  cat /usr/share/gnome-shell/theme/gdm3.css~ > /usr/share/gnome-shell/theme/gdm3.css
+  echo "Login background sucessfully restored to its original theme."
+  echo "Restart Gnome to apply change."
+  exit
 fi
 
 # Test if argument is an image file.
-if [[ $(file --mime-type -b "$1") = image/*g ]]; then
+case $(file --mime-type -b "$1") in 
+  image/*g)
 # Get the full path of submited image.
-	imgPath=$( realpath "$1" )
+    imgPath=$( realpath "$1" )
 # Ubuntu GDM login background configuration file path.
-	cssPath=/usr/share/gnome-shell/theme/gdm3.css
+    cssPath=/usr/share/gnome-shell/theme/gdm3.css
 # Test if there is a backup of the original gdm css file and create a backup if
 # there isn't one. 
-	if [[ ! -f "$cssPath"~ ]]
-	then
-		cp "$cssPath" "$cssPath"~ 
-	fi
+    if [ ! -f "$cssPath"~ ]
+    then
+      cp "$cssPath" "$cssPath"~ 
+    fi
 # Change the login background image to the one you submited.
-	ex $cssPath << EOF
+    ex $cssPath << EOF
 /#lockDialogGroup
-:normal jf:ld}a url(file://$imgPath);o	background-size: cover; }
+:normal jf:ld}a url(file://$imgPath);obackground-size: cover; }
 :wq
 EOF
 # Test if login screen background was changed.
-	if grep -q "$imgPath" "$cssPath" = 0; then
-		echo "Login background image sucessfully changed."
-		echo "Restart Gnome to apply change." 
-	fi
+    if grep -q "$imgPath" "$cssPath" = 0; then
+      echo "Login background image sucessfully changed."
+      echo "Restart Gnome to apply change." 
+    fi
+    ;;
+  *)
 # If no image file was submited, ask for proper submission.
-else
-	echo "Please, submit an .jpg, .jpeg or .png image file."
-	echo "Usage: sudo ./ubuntu-change-login-background path/to/image.*g" 
-fi
+    echo "Please, submit an .jpg, .jpeg or .png image file."
+    echo "Usage: sudo ./ubuntu-change-login-background path/to/image.*g" 
+    ;;
+esac
