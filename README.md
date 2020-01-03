@@ -14,3 +14,5 @@ If you see a message `login background image sucessfully changed`, then, when yo
 your gdm login background should be covered with the image you selected.
 
 You can restore your original gdm theme any time with `sudo ./gdm-change-login-background --restore`.
+
+If you change your image location, gdm won't be able to show it anymore.
