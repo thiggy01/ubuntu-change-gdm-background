@@ -15,9 +15,7 @@ if [ "$1" = "--restore" ]; then
   exit
 fi
 
-#
 # The main script.
-#
 
 # Test if argument is an image file.
 case $(file --mime-type -b "$1") in 
