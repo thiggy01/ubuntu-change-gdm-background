@@ -15,4 +15,4 @@ your gdm login background should be covered with the image you selected.
 
 You can restore your original gdm theme any time with `sudo ./gdm-change-login-background --restore`.
 
-If you change your image location, gdm won't be able to show it anymore.
+This script will save the pictures in /usr/share/gdm/saved-pictures folder so you can move your original image file without losing the gdm login image setting.
