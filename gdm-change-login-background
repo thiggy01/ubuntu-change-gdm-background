@@ -15,29 +15,31 @@ if [ "$1" = "--restore" ]; then
   exit
 fi
 
-# The main script.
+## The main script. ##
 
 # Test if argument is an image file.
 case $(file --mime-type -b "$1") in 
   image/*g)
     # Get the full path of submited image.
-    ImgPath=$( realpath "$1" )
+    ImgPath=$(realpath "$1") 
+    ImgName=$(basename "$1")
+    # Save pictures to /usr/share/gdm-backgrounds.
+    [ ! -d /usr/share/gdm/saved-pictures ] && mkdir /usr/share/gdm/saved-pictures
+    cp "$ImgPath" /usr/share/gdm/saved-pictures
+    BgImgPath=/usr/share/gdm/saved-pictures/"$ImgName"
     # Ubuntu GDM login background configuration file path.
     CssPath=/usr/share/gnome-shell/theme/gdm3.css
     # Test if there is a backup of the original gdm css file and create a backup,
     # if there isn't one. 
-    if [ ! -f "$CssPath"~ ]
-    then
-      cp "$CssPath" "$CssPath"~ 
-    fi
+    [ ! -f "$CssPath"~ ] && cp "$CssPath" "$CssPath"~ 
     # Change the login background image to the one you submited.
     ex $CssPath << EOF
 /#lockDialogGroup
-:normal jf:ld}a url(file://$ImgPath);obackground-size: cover; }
+:normal jf:ld}a url(file://$BgImgPath);obackground-size: cover; }
 :wq
 EOF
     # Test if login screen background was changed.
-    if grep -wq "$ImgPath" "$CssPath"; then
+    if grep -wq "$BgImgPath" "$CssPath"; then
       echo "Login background image sucessfully changed."
       echo "Restart Gnome to apply change." 
     fi
