@@ -1,52 +1,59 @@
 #!/usr/bin/env bash
-# ============================================================================ #
 # This script automates the process of changing the Gnome Display Manager(gdm)
 # login background image.
 # Autor: Thiago Silva
 # Contact: thiagos.dasilva@gmail.com
 # URL: https://github.com/thiggy01/gdm-change-login-background
-# ============================================================================ #
+# ========================================================================== #
 
 # Add the restore option in order to restore gdm original theme.
 if [ "$1" = "--restore" ]; then
-  cat /usr/share/gnome-shell/theme/gdm3.css~ > /usr/share/gnome-shell/theme/gdm3.css
+  cat /usr/share/gnome-shell/theme/gdm3.css~ > /usr/share/gnome-shell/theme/\
+gdm3.css
   echo "Login background sucessfully restored to its original theme."
   echo "Restart Gnome to apply change."
   exit
 fi
 
-## The main script. ##
+# Get the image selected by the user from GUI.
+usrInput=`yad --file --add-preview`
 
 # Test if argument is an image file.
-case $(file --mime-type -b "$1") in 
-  image/*g)
+if [[ $(file --mime-type -b "$usrInput") = image/*g ]]; then
+
     # Get the full path of submited image.
-    ImgPath=$(realpath "$1") 
-    ImgName=$(basename "$1")
+    imgPath=$(realpath "$usrInput") 
+    imgName=$(basename "$usrInput")
+
     # Save pictures to /usr/share/gdm-backgrounds.
     [ ! -d /usr/share/gdm/saved-pictures ] && mkdir /usr/share/gdm/saved-pictures
-    cp "$ImgPath" /usr/share/gdm/saved-pictures
-    BgImgPath=/usr/share/gdm/saved-pictures/"$ImgName"
+    cp "$imgPath" /usr/share/gdm/saved-pictures
+    bgImgPath=/usr/share/gdm/saved-pictures/"$imgName"
+
     # Ubuntu GDM login background configuration file path.
-    CssPath=/usr/share/gnome-shell/theme/gdm3.css
+    cssPath=/usr/share/gnome-shell/theme/gdm3.css
+    
     # Test if there is a backup of the original gdm css file and create a backup,
     # if there isn't one. 
-    [ ! -f "$CssPath"~ ] && cp "$CssPath" "$CssPath"~ 
+    [ ! -f "$cssPath"~ ] && cp "$cssPath" "$cssPath"~ 
+
     # Change the login background image to the one you submited.
-    ex $CssPath << EOF
+    ex $cssPath << EOF
 /#lockDialogGroup
-:normal jf:ld}a url(file://$BgImgPath);obackground-size: cover; }
+:normal jf:ld}a url(file://$bgImgPath);obackground-size: cover; }
 :wq
 EOF
+
     # Test if login screen background was changed.
-    if grep -wq "$BgImgPath" "$CssPath"; then
+    if grep -wq "$bgImgPath" "$cssPath"; then
       echo "Login background image sucessfully changed."
       echo "Restart Gnome to apply change." 
     fi
-    ;;
-  *)
+
+else
+
     # If no image file was submited, ask for proper submission.
     echo "Please, submit an .jpg, .jpeg or .png image file."
     echo "Usage: sudo ./ubuntu-change-login-background path/to/image.*g" 
-    ;;
-esac
+
+fi
