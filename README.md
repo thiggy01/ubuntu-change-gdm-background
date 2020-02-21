@@ -8,7 +8,7 @@ Download it with the following command:
     curl -L -O github.com/thiggy01/gdm-change-login-background/raw/master/gdm-change-login-background
 
 Give it execution permition with `chmod +x gdm-change-login-background` command and run it with root privileges such 
-as `sudo ./gdm-change-login-background path/to/image/file`.
+as `sudo ./gdm-change-login-background.
 
 If you see a message `login background image sucessfully changed`, then, when you restart gdm or reboot your computer, 
 your gdm login background should be covered with the image you selected.
