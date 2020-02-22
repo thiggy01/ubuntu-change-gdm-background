@@ -15,11 +15,11 @@ gdm3.css
   exit
 fi
 
-# Get the image selected by the user from GUI.
-usrInput=`yad --file --add-preview`
+# Get the image selected by user from yad based GUI.
+usrInput=`yad --file --center --width=900 --height=450 --title "Select An Image File" --add-preview` 
 
 # Test if argument is an image file.
-if [[ $(file --mime-type -b "$usrInput") = image/*g ]]; then
+if [[ $(file --mime-type -b "$usrInput") == image/*g ]]; then
 
     # Get the full path of submited image.
     imgPath=$(realpath "$usrInput") 
@@ -46,14 +46,29 @@ EOF
 
     # Test if login screen background was changed.
     if grep -wq "$bgImgPath" "$cssPath"; then
-      echo "Login background image sucessfully changed."
-      echo "Restart Gnome to apply change." 
+	yad --title "Sucessful Message" --center \
+	    --width=300 --height=100 --borders=20 \
+	    --text="Login image sucessfully changed." --button=gtk-ok
+	yad --title "Restart Question" --center \
+	    --width=300 --height=100 --borders=20 \
+	    --text="Restart Gnome to apply change?" \
+	    --button=gtk-yes:1 --button=gtk-no:0
+	ret=$?
+	if [ $ret == 1 ]; then
+	    killall -3 gnome-shell
+	elif [ $ret == 0 ]; then
+	    yad --title "Warning Message" --center \
+		--width=300 --height=100 --borders=20 \
+		--text="Chante won't be applied until restart" \
+		--button=gtk-ok
+	fi
     fi
 
 else
 
     # If no image file was submited, ask for proper submission.
-    echo "Please, submit an .jpg, .jpeg or .png image file."
-    echo "Usage: sudo ./ubuntu-change-login-background" 
-
+    yad --title "Error Message" --center \
+        --width=300 --height=100 --borders=20 \
+	--text "Submit a .jpg, .jpeg or .png image file."
+	--button=gtk-ok
 fi
