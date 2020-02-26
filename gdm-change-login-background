@@ -12,17 +12,27 @@ if [ "$1" = "--restore" ]; then
 gdm3.css
   echo "Login background sucessfully restored to its original theme."
   echo "Restart Gnome to apply change."
-  exit
+  exit 0
 fi
 
 # Get the image selected by user from yad based GUI.
-usrInput=`yad --file --center --width=900 --height=450 --title "Select An Image File" --add-preview` 
+usrInput=`yad --file --center --width=900 --height=450 --title "Select An \
+Image File" --add-preview --file-filter "Image Files | *.jpg *.png" 2> /dev/null`
+[ $usrInput -z ] && exit 1
+
+# Verify if yad is installed
+if [ $? == 127 ]; then
+     echo "yad package is not installed."
+     echo "It is needed for GUI."
+     echo "Exiting."
+     exit 1
+fi
 
 # Test if argument is an image file.
 if [[ $(file --mime-type -b "$usrInput") == image/*g ]]; then
 
     # Get the full path of submited image.
-    imgPath=$(realpath "$usrInput") 
+    imgPath=$(realpath "$usrInput")
     imgName=$(basename "$usrInput")
 
     # Save pictures to /usr/share/gdm-backgrounds.
@@ -52,13 +62,13 @@ EOF
 	yad --title "Restart Question" --center \
 	    --width=300 --height=100 --borders=20 \
 	    --text="Restart Gnome to apply change?" \
-	    --button=gtk-yes:1 --button=gtk-no:0
+	    --button=gtk-yes:1 --button=gtk-no:2
 	ret=$?
 	if [ $ret == 1 ]; then
 	    killall -3 gnome-shell
-	elif [ $ret == 0 ]; then
+	elif [ $ret == 2 ]; then
 	    yad --title "Warning Message" --center \
-		--width=300 --height=100 --borders=20 \
+		--width=300 --height=70 --borders=20 \
 		--text="Chante won't be applied until restart" \
 		--button=gtk-ok
 	fi
@@ -69,6 +79,6 @@ else
     # If no image file was submited, ask for proper submission.
     yad --title "Error Message" --center \
         --width=300 --height=100 --borders=20 \
-	--text "Submit a .jpg, .jpeg or .png image file."
+	--text "Submit a .jpg, .jpeg or .png image file." \
 	--button=gtk-ok
 fi
