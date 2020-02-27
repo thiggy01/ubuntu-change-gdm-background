@@ -18,7 +18,7 @@ fi
 # Get the image selected by user from yad based GUI.
 usrInput=`yad --file --center --width=900 --height=450 --title "Select An \
 Image File" --add-preview --file-filter "Image Files | *.jpg *.png" 2> /dev/null`
-[ $usrInput -z ] && exit 1
+[ -z "$usrInput" ] && exit 1
 
 # Verify if yad is installed
 if [ $? == 127 ]; then
