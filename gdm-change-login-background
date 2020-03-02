@@ -27,10 +27,7 @@ if [ $? == 127 ]; then
      exit 1
 fi
 
-<<<<<<< HEAD
 # Check if there is a user input.
-=======
->>>>>>> 3b56942b78b364f3704484d4acc4f77af1bc1e74
 [ -z "$usrInput" ] && exit 1
 
 # Test if argument is an image file.
