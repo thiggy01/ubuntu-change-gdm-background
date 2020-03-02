@@ -72,7 +72,7 @@ EOF
 	elif [ $ret == 2 ]; then
 	    yad --title "Warning Message" --center \
 		--width=300 --height=100 --borders=20 \
-		--text="Chante won't be applied until restart." \
+		--text="Change won't be applied until restart." \
 		--button=gtk-ok
 	fi
     fi
