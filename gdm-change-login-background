@@ -60,7 +60,8 @@ EOF
     if grep -wq "$bgImgPath" "$cssPath"; then
 	yad --title "Sucessful Message" --center \
 	    --width=300 --height=100 --borders=20 \
-	    --text="Login image sucessfully changed." --button=gtk-ok
+	    --text="Login image sucessfully changed." \
+	    --button=gtk-ok
 	yad --title "Restart Question" --center \
 	    --width=300 --height=100 --borders=20 \
 	    --text="Restart Gnome to apply change?" \
@@ -70,17 +71,9 @@ EOF
 	    killall -3 gnome-shell
 	elif [ $ret == 2 ]; then
 	    yad --title "Warning Message" --center \
-		--width=300 --height=70 --borders=20 \
-		--text="Chante won't be applied until restart" \
+		--width=300 --height=100 --borders=20 \
+		--text="Chante won't be applied until restart." \
 		--button=gtk-ok
 	fi
     fi
-
-else
-
-    # If no image file was submited, ask for proper submission.
-    yad --title "Error Message" --center \
-        --width=300 --height=100 --borders=20 \
-	--text "Submit a .jpg, .jpeg or .png image file." \
-	--button=gtk-ok
 fi
