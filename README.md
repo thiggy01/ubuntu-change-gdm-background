@@ -3,7 +3,12 @@ A script which automates the process of changing
 the Gnome Display Manager login screen background image of Gnome Display
 Manager version 3. 
 
+<<<<<<< HEAD
 THIS SCRIPT WON'T WORK WITH THE NEW UBUNTU 20.04
+=======
+<span style="color:red">THIS SCRIPT WON'T WORK WITH THE NEW UBUNTU
+20.04</span>
+>>>>>>> aca0636dfbaf74189031f7379a321219e34d1cd9
 
 ## Dependencies 
 You need to have yad package installed to be able to see the

@@ -22,7 +22,7 @@ Image File" --add-preview --file-filter "Image Files | *.jpg *.png" 2> /dev/null
 # Verify if yad is installed
 if [ $? == 127 ]; then
      echo "yad package is not installed."
-     echo "It is needed for GUI."
+     echo "It is needed for graphical interface."
      echo "Exiting."
      exit 1
 fi
