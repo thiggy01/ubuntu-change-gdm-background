@@ -22,7 +22,7 @@ Download it with the following command:
 
 Give it execution permition with `chmod +x gdm-change-login-background`
 command and run it with root privileges such as `sudo
-./ubuntu-change-gdm-background.
+./ubuntu-change-gdm-background`.
 
 If you see a message `login image sucessfully changed`, then, when you restart
 gnome-shell or reboot your computer, your gdm login background should be
