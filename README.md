@@ -4,7 +4,7 @@ the Gnome Display Manager login screen background image of Gnome Display
 Manager version 3. 
 
 ## Disclaimer
-This script was tested in Ubuntu 18.04, 18.10, 19.04 and 19,10 and I'm not 
+This script was tested in Ubuntu 18.04, 18.10, 19.04 and 19,10 only and I'm not 
 responsible for any problem that it may cause.
 THIS SCRIPT WON'T WORK WITH THE NEW UBUNTU 20.04
 
