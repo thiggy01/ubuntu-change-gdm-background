@@ -1,12 +1,14 @@
 # ubuntu-change-gdm-background 
-A script which automates the process of changing
-the Gnome Display Manager login screen background image of Gnome Display
-Manager version 3. 
+This is a script which automates the process of changing the Gnome Display Manager 
+background image of Ubuntu.
 
 ## Disclaimer
 This script was tested in Ubuntu 18.04, 18.10, 19.04 and 19,10 only and I'm not 
 responsible for any problem that it may cause.
-THIS SCRIPT WON'T WORK WITH THE NEW UBUNTU 20.04
+THIS SCRIPT WON'T WORK WITH THE NEW UBUNTU 20.04. If you want to change Ubuntu
+20.04 gdm backgroud image, you have to use another script avalible at 
+https://github.com/thiggy01/ubuntu-20.04-change-gdm-background.
+ 
 
 ## Dependencies 
 You need to have yad package installed to be able to see the
@@ -17,16 +19,14 @@ apt install yad`.
 ## Installation and Usage 
 Download it with the following command:
 
-    curl -L -O
-    github.com/thiggy01/gdm-change-login-background/raw/master/ubuntu-change-gdm-background
+    curl -L -O github.com/thiggy01/ubuntu-change-gdm-background/raw/master/ubuntu-change-gdm-background
 
 Give it execution permition with `chmod +x gdm-change-login-background`
-command and run it with root privileges such as `sudo
-./ubuntu-change-gdm-background`.
+command and run it with root privileges such as `sudo ./ubuntu-change-gdm-background`.
 
 If you see a message `login image sucessfully changed`, then, when you restart
-gnome-shell or reboot your computer, your gdm login background should be
-covered with the image you selected.
+gdm or reboot your computer, your gdm login background should be covered with 
+the image you selected.
 
 You can restore your original gdm theme any time with `sudo
 ./ubuntu-change-gdm-background --restore`.
