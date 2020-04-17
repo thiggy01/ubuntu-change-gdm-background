@@ -62,11 +62,11 @@ EOF
 	    --button=gtk-ok
 	yad --title "Restart Question" --center \
 	    --width=300 --height=100 --borders=20 \
-	    --text="Restart Gnome to apply change?" \
+	    --text="Restart gdm to apply change?" \
 	    --button=gtk-yes:1 --button=gtk-no:2
 	ret=$?
 	if [ $ret == 1 ]; then
-	    killall -3 gnome-shell
+	    service gdm restart
 	elif [ $ret == 2 ]; then
 	    yad --title "Warning Message" --center \
 		--width=300 --height=100 --borders=20 \
