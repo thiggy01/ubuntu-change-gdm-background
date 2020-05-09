@@ -10,26 +10,24 @@ THIS SCRIPT WON'T WORK WITH THE NEW UBUNTU 20.04. If you want to change Ubuntu
 https://github.com/thiggy01/ubuntu-20.04-change-gdm-background.
  
 
-## Dependencies 
-You need to have yad package installed to be able to see the
-graphical user interface. If you don't have it, install with your distribution
-package manager. On Debian based distributions, you can install it with `sudo
-apt install yad`.  
 
 ## Installation and Usage 
-Download it with the following command:
+
+First of all, You need to have yad package installed to be able to see the 
+graphical user interface. On Ubuntu, you can install it with `sudo apt install yad`.  
+
+Download the script with the following command:
 
     curl -L -O github.com/thiggy01/ubuntu-change-gdm-background/raw/master/ubuntu-change-gdm-background
 
-Give it execution permition with `chmod +x gdm-change-login-background`
-command and run it with root privileges such as `sudo ./ubuntu-change-gdm-background`.
+Set it as executable with `chmod +x ubuntu-change-gdm-background` command and 
+run it with root privileges such as `sudo ./ubuntu-change-gdm-background`.
 
-If you see a message `login image sucessfully changed`, then, when you restart
-gdm or reboot your computer, your gdm login background should be covered with 
-the image you selected.
+If you see a message `login image sucessfully changed`, then, when you restart gdm 
+servive or reboot your computer, your login background should be covered with the 
+image you selected.
 
-You can restore your original gdm theme any time with `sudo
-./ubuntu-change-gdm-background --restore`.
+You can restore your original gdm theme any time with `sudo ./ubuntu-change-gdm-background --restore`.
 
 This script will save the pictures in /usr/share/gdm/saved-pictures folder so
 you can move your original image file without losing the gdm login image

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Autor: Thiago Silva
 # Contact: thiagos.dasilva@gmail.com
-# URL: https://github.com/thiggy01/gdm-change-login-background
-# ========================================================================== #
+# URL: https://github.com/thiggy01/ubuntu-change-gdm-background
+# ============================================================= #
 
 # Add the restore option in order to restore gdm original theme.
 if [ "$1" = "--restore" ]; then
@@ -18,7 +18,7 @@ usrInput=`yad --file --center --width=900 --height=450 --title "Select An \
 Image File" --add-preview --file-filter "Image Files | *.jpg *.png" 2> /dev/null`
 
 # Verify if yad is installed
-if [ $? == 127 ]; then
+if [ "$?" -eq 127 ]; then
      echo "yad package is not installed."
      echo "It is needed for graphical interface."
      echo "Exiting."
