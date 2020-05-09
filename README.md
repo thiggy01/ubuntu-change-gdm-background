@@ -1,6 +1,6 @@
 # ubuntu-change-gdm-background 
-This is a script which automates the process of changing the Gnome Display Manager 
-background image of Ubuntu.
+This is a script which automates the process of setting an image in the Gnome Display Manager 
+background of Ubuntu and change its the aubergine theme.
 
 ## Disclaimer
 This script was tested in Ubuntu 18.04, 18.10, 19.04 and 19,10 only and I'm not 
@@ -8,8 +8,6 @@ responsible for any problem that it may cause.
 THIS SCRIPT WON'T WORK WITH THE NEW UBUNTU 20.04. If you want to change Ubuntu
 20.04 gdm backgroud image, you have to use another script avalible at 
 https://github.com/thiggy01/ubuntu-20.04-change-gdm-background.
- 
-
 
 ## Installation and Usage 
 
